@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use App\Models\Type;
 
 class ProjectController extends Controller
 {
@@ -16,9 +17,18 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $dbTypeList = Type::all();
+        $typeForIndex = [];
+        foreach ($dbTypeList as $type) {
+            $typeForIndex[$type['id']] = $type['name'];
+        }
 
-        return view('admin.projects.index', compact('projects'));
+        $data = [
+            'projects' => Project::all(),
+            'typeForIndex' => $typeForIndex
+        ];
+
+        return view('admin.projects.index', $data);
     }
 
     /**
@@ -28,7 +38,11 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $data = [
+            'typeArray' => Type::all()
+        ];
+
+        return view('admin.projects.create', $data);
     }
 
     /**
@@ -58,7 +72,8 @@ class ProjectController extends Controller
     {
 
         $data= [
-            'project' => $project
+            'project' => $project,
+            'type' => Type::where('id', $project->type_id)->first('name')
         ];
 
         return view('admin.projects.show', $data);
@@ -72,7 +87,12 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+        $data = [
+            'typeArray' => Type::all(),
+            'project' => $project
+        ];
+
+        return view('admin.projects.edit', $data);
     }
 
     /**

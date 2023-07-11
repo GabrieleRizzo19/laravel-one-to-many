@@ -18,6 +18,7 @@
             </div>
             
             <h1 class=" text-uppercase">{{ $project['title'] }}</h1>
+            <h5>{{ $type['name'] }}</h5>
             <p>{{ $project['description'] }}</p>
             <img src="{{ $project['image'] }}" alt="">
         </div>

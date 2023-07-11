@@ -24,7 +24,7 @@ return new class extends Migration
 
 
             // Metodo ad una riga
-            $table->foreignId('type_id')->nullable()->constrained();
+            $table->foreignId('type_id')->constrained();
 
 
         });
