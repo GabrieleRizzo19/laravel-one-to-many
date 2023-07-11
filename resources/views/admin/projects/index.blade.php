@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-between">
+        <div class="row">
             
             @foreach ($projects as $project)
                 <div class="col-4">

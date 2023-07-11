@@ -27,9 +27,15 @@
 
                 <label for="description">Descrizione</label>
                 <textarea class="form-control mb-3" name="description" id="description" cols="30" rows="10">{{ old('description') }}</textarea>
+                @error('description')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
 
                 <label for="image">URL Immagine</label>
                 <input class="form-control mb-3" type="text" name="image" id="image" value="{{ old('image') }}">
+                @error('image')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
 
                 <input type="submit" class="form-control btn btn-primary"> 
 
