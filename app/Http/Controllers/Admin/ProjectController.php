@@ -17,15 +17,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $dbTypeList = Type::all();
-        $typeForIndex = [];
-        foreach ($dbTypeList as $type) {
-            $typeForIndex[$type['id']] = $type['name'];
-        }
 
         $data = [
-            'projects' => Project::all(),
-            'typeForIndex' => $typeForIndex
+            'projects' => Project::all()
         ];
 
         return view('admin.projects.index', $data);
@@ -72,8 +66,7 @@ class ProjectController extends Controller
     {
 
         $data= [
-            'project' => $project,
-            'type' => Type::where('id', $project->type_id)->first('name')
+            'project' => $project
         ];
 
         return view('admin.projects.show', $data);
