@@ -1,11 +1,8 @@
 <?php 
 
 return [
-    'HTML',
-    'HTML-CSS',
-    'HTML-CSS-JS',
-    'HTML-CSS-VUE',
-    'VITE',
-    'PHP',
-    'LARAVEL'
+    'E-Commerce',
+    'Sito vetrina',
+    'Web App',
+    'Gioco'
 ];

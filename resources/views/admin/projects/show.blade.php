@@ -18,7 +18,17 @@
             </div>
             
             <h1 class=" text-uppercase">{{ $project['title'] }}</h1>
-            <h5>{{ $project->type->name }}</h5>
+            <h5>Tipo: {{ $project->type->name }}</h5>
+            <h5>
+                Tecnologia usata:
+                @foreach ($project->technology as $technology)
+                    @if($loop->last)
+                        {{ $technology->name }}
+                    @else
+                        {{ $technology->name }},
+                    @endif
+                @endforeach
+            </h5>
             <p>{{ $project['description'] }}</p>
             <img src="{{ $project['image'] }}" alt="">
         </div>
